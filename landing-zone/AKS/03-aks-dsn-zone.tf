@@ -17,3 +17,9 @@ output "aks_private_zone_id" {
 output "aks_private_zone_name" {
   value = azurerm_private_dns_zone.aks-dns.name
 }
+
+resource "azurerm_subnet_route_table_association" "rt_association" {
+  subnet_id      = data.terraform_remote_state.existing-lz.outputs.aks_subnet_id
+  route_table_id = data.terraform_remote_state.existing-lz.outputs.lz_rt_id
+  depends_on = [ azurerm_kubernetes_cluster.akscluster ]
+}
