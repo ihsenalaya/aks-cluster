@@ -27,10 +27,7 @@ resource "azurerm_subnet_network_security_group_association" "aks-subnet" {
 # # Associate Route Table to AKS Subnet
 # # Lorsque vous associez une table de routage à un sous-réseau à l'aide de azurerm_subnet_route_table_association, toutes les règles de routage définies dans la table de routage 
 # #s'appliqueront au trafic entrant et sortant du sous-réseau spécifié.
-resource "azurerm_subnet_route_table_association" "rt_association" {
-  subnet_id      = azurerm_subnet.aks.id
-  route_table_id = azurerm_route_table.route_table.id
-}
+
 
 
  
